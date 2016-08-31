@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+            /*height: 30px;*/
+            /*padding-bottom: 30px;*/
+        }
+        #container {
+            width: 400px;
+            height: 300px;
+            /*background: #ccc;*/
+            /*margin: 0 auto;*/
+            margin: 50px auto 50px auto;
+        }
+        #container ul{
+            overflow: hidden;
+            height: 30px;
+            /*padding-top: 30px;*/
+        }
+        #container li {
+            float: left;
+            width: 120px;
+            height: 30px;
+            background: #aaa;
+            margin-right: 13px;
+            line-height: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #container li.selected{
+            background: #000;
+            color: #fff;
+        }
+        #content {
+            background: #ccc;
+            height: 270px;
+            border-top: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul>
+        <li class="selected">this</li>
+        <li>is</li>
+        <li>me</li>
+    </ul>
+    <div id="content">//homework :通过找标签的方式，找li来显示结果
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ul>
+    </div>
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var aLi = oContainer.getElementsByTagName('li');
+    var oContent = document.getElementById('content');
+    var data = ['a2a','bbb','ccc'];
+    oContent.innerHTML = data[0];
+    for (var i =0; i<aLi.length; i++){
+        aLi[i].index = i;
+        aLi[i].onclick = function(){
+            for (var j=0;j<aLi.length; j++){
+                aLi[j].className = '';
+//                    console.log(data[i]);
+                oContent.innerHTML = data[this.index];
+            }
+            this.className = 'selected';
+        }
+    }
+</script>
+</body>
+</html>
