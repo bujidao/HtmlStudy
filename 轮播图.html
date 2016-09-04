@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 640px;
+            height: 360px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #container img{
+            width: 640px;
+            height: 360px;
+            float: left;
+            /*display: none;*/
+        }
+        /*#container img.selected{*/
+        /*display: block;*/
+        /*}*/
+        #content{
+            width: 2560px;
+            height: 360px;
+            position: absolute;
+            left: 0px;
+        }
+        #tab{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        #tab li{
+            float: left;
+            background: #222;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            margin-left: 5px;
+            text-align: center;
+            cursor: pointer;
+            color: #fff;
+            opacity: 0.75;
+        }
+        #tab li.selected{
+            background: orange;
+        }
+        /*#arrow{*/
+        /*position: absolute;*/
+        /*left: 10px;*/
+        /*bottom: 10px;*/
+        /*}*/
+        #arrow span{
+            background: #222;
+            color: #fff;
+            width: 20px;
+            height: 100px;
+            cursor: pointer;
+            margin-left: 10px;
+            float: left;
+            text-align: center;
+            line-height: 100px;
+            opacity: 0.3;
+        }
+        #prev{
+            position: absolute;
+            left: 10px;
+            bottom: 130px;
+        }
+        #next{
+            position: absolute;
+            right: 10px;
+            bottom: 130px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <img src="img/6.jpg" alt="" class="selected"/>
+        <img src="img/7.jpg" alt=""/>
+        <img src="img/8.jpg" alt=""/>
+        <img src="img/9.jpg" alt=""/>
+    </div>
+    <ul id="tab">
+        <li class="selected">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div id="arrow">
+        <span id="prev">&lt;</span>
+        <span id="next">&gt;</span>
+    </div>
+</div>
+<script src="js/jslib.js"></script>
+<script>
+    var oContainer = document.getElementById('container');
+    var oContent = document.getElementById('content');
+    var oTab = document.getElementById('tab');
+    var oArrow = document.getElementById('arrow');
+    var aImg = oContent.getElementsByTagName('img');
+    var aLi = oTab.getElementsByTagName('li');
+    var aSpan = oArrow.getElementsByTagName('span');
+    var oNext = document.getElementById('next');
+    var oPrev = document.getElementById('prev');
+    var iNow = 0;
+
+    for(var i=0; i<aLi.length; i++){
+        aLi[i].index = i;
+        aLi[i].onmouseover = function(){
+            changeImg(this.index);
+            iNow = this.index
+//                for(var i=0; i<aLi.length; i++){
+//                    aLi[i].className = '';
+//                }
+//                aLi[this.index].className = 'selected';
+//                animate(oContent, {left: -aImg[0].offsetWidth*this.index});
+        }
+
+    }
+    oNext.onclick = function(){
+        iNow++;
+        if(iNow == aLi.length){
+            iNow = 0;
+        }
+        changeImg(iNow);
+    }
+    oPrev.onclick = function(){
+        iNow--;
+        if(iNow == -1){
+            iNow = aLi.length-1;
+        }
+        changeImg(iNow);
+//            for(var i=0; i<aLi.length; i++){
+//                aLi[i].className = '';
+//            }
+//            aLi[iNow].className = 'selected';
+//            animate(oContent, {left: -aImg[0].offsetWidth*iNow});
+    }
+    function changeImg(aIndex){
+        for(var i=0; i<aLi.length; i++){
+            aLi[i].className = '';
+        }
+        aLi[aIndex].className = 'selected';
+        animate(oContent, {left: -aImg[0].offsetWidth*aIndex});
+    }
+
+    var timer;
+    timer = setInterval(function(){
+        oNext.onclick();
+    },3000);
+    oContainer.onmouseover = function(){
+        clearInterval(timer);
+    }
+    oContainer.onmouseout = function(){
+        timer = setInterval(function(){
+            oNext.onclick();
+        },3000);
+    }
+
+    for(var i=0; i<aSpan.length; i++){
+        aSpan[i].onmouseover = function(){
+            //  aSpan[i].style.opacity = 0.05;
+            animate(this, {opacity: 90});
+        }
+        aSpan[i].onmouseout = function(){
+            //aSpan[i].style.opacity = 0.05;
+            animate(this, {opacity: 40});
+        }
+    }
+
+
+    //        for(var j=0; j<aSpan.length; j++){
+    //            aSpan[i].index = j;
+    //            aSpan[j].onclick = function(){
+    //                for(var j=0; j<aSpan.length; j++){
+    ////                    aSpan[j].className = '';
+    //                    aImg[j].className = '';
+    //                }
+    //                aImg[this.index].className = 'selected';
+    ////                this.className = 'selected';
+    ////                if(this.index != 0){
+    ////                    animate(oContent, {left: -aImg[0].offsetWidth*this.index});
+    ////                }else{
+    ////                    animate(oContent, {left: -aImg[0].offsetWidth*this.index});
+    ////                }
+    //                animate(oContent, {left: -aImg[0].offsetWidth*this.index});
+    //            }
+    //        }
+
+    //        for(var i=0; i<aSpan.length; i++){
+    //            aSpan[i].index = i;
+    //            aSpan[i].onclick = function(){
+    //                for(var j=0; j<aSpan.length; j++){
+    //                    aSpan[j].className = '';
+    //                }
+    //                this.className = 'selected';
+    //                animate(oContent, {left: -aImg[0].offsetWidth*this.index});
+    //            }
+    //
+    //        }
+</script>
+</body>
+</html>

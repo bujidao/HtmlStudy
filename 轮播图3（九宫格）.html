@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 1440px;
+            height: 810px;
+            /*overflow: hidden;*/
+            margin: 405px auto;
+            position: relative;
+            border-radius: 50px;
+        }
+        #content{
+            width: 4320px;
+            height: 2430px;
+            position: absolute;
+            left: -1440px;
+            top: -810px;
+        }
+        #content img{
+            width: 1440px;
+            height: 810px;
+            float: left;
+            border: 0 solid #fff;
+        }
+        #tab{
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+        }
+        #tab li{
+            width: 40px;
+            height: 40px;
+            background: #333;
+            float: left;
+            margin: 10px;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            opacity: 0.75;
+            font-size: 25px;
+            cursor: pointer;
+            border-radius: 100px;
+        }
+        #tab li.selected{
+            background: #0f0;
+        }
+        #arrow span{
+            width: 50px;
+            height: 210px;
+            background: #333;
+            display: block;
+            float: left;
+            text-align: center;
+            color: #fff;
+            font-size: 25px;
+            line-height: 210px;
+            opacity: 0.1;
+            cursor: pointer;
+        }
+        #prev{
+            position: absolute;
+            left: 30px;
+            top: 300px;
+        }
+        #next{
+            position: absolute;
+            right: 30px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <div>
+            <img src="img/2.jpg" alt="1"/>
+            <img src="img/6.jpg" alt="2"/>
+            <img src="img/7.jpg" alt="3"/>
+        </div>
+        <div>
+            <img src="img/8.jpg" alt="4"/>
+            <img src="img/9.jpg" alt="5" class="selected"/>
+            <img src="img/10.jpg" alt="6"/>
+        </div>
+        <div>
+            <img src="img/11.jpg" alt="7"/>
+            <img src="img/12.jpg" alt="8"/>
+            <img src="img/13.jpg" alt="9"/>
+        </div>
+    </div>
+
+    <div id="tab">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <ul>
+            <li>4</li>
+            <li class="selected">5</li>
+            <li>6</li>
+        </ul>
+        <ul>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+        </ul>
+    </div>
+    <div id="arrow">
+        <span id="prev">&lt;</span>
+        <span id="next">&gt;</span>
+    </div>
+</div>
+<script src="js/jslib.js"></script>
+<script>
+    var oContainer = document.getElementById('container');
+    var oContent = document.getElementById('content');
+    var oTab = document.getElementById('tab');
+    var oArrow = document.getElementById('arrow');
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var aImg = oContent.getElementsByTagName('img');
+    var aLi = oTab.getElementsByTagName('li');
+    var aSpan = oArrow.getElementsByTagName('span');
+    var iNow = 4;
+
+    for(var i=0; i<aLi.length; i++){
+        aLi[i].index = i;
+        aLi[i].onmouseover = function(){
+            iNow = this.index;
+//            for(var i=0; i<aLi.length; i++){
+//                aLi[i].className = '';
+//            }
+//            this.className = 'selected';
+//            animate(oContent,{
+//                left: -aImg[0].offsetWidth*(this.index%3),
+//                top: -aImg[0].offsetHeight*(parseInt(this.index/3))
+//            });
+            changeImg(this.index);
+        }
+
+        oNext.onclick = function(){
+            iNow++;
+            if(iNow > aLi.length-1){
+                iNow = 0;
+            }
+            changeImg(iNow);
+        }
+
+        oPrev.onclick = function(){
+            iNow--;
+            if(iNow < 0){
+                iNow = aLi.length-1;
+            }
+            changeImg(iNow);
+        }
+
+        changeImg = function (cImg){
+            for(var i=0; i<aLi.length; i++){
+                aLi[i].className = '';
+            }
+            aLi[cImg].className = 'selected';
+            animate(oContent,{
+                left: -aImg[0].offsetWidth*(cImg%3),
+                top: -aImg[0].offsetHeight*(parseInt(cImg/3))
+            });
+        }
+
+    }
+    var timer;
+    timer = setInterval(function(){
+        oNext.onclick();
+    },3000);
+    oContainer.onmouseover = function(){
+        clearInterval(timer);
+        for(i=0; i<aSpan.length; i++){
+            animate(aSpan[i], {opacity: 90});
+        }
+    }
+    oContainer.onmouseout = function(){
+        timer = setInterval(function(){
+            oNext.onclick();
+        },3000);
+        for(i=0; i<aSpan.length; i++){
+            animate(aSpan[i], {opacity: 10});
+        }
+    }
+    //    for(var i=0; i<aSpan.length; i++){
+    //        aSpan[i].onmouseover = function(){
+    //            //  aSpan[i].style.opacity = 0.05;
+    //            animate(this, {opacity: 90});
+    //        }
+    //        aSpan[i].onmouseout = function(){
+    //            //aSpan[i].style.opacity = 0.05;
+    //            animate(this, {opacity: 40});
+    //        }
+    //    }
+</script>
+</body>
+</html>
