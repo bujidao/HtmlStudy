@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>小球球</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #drag{
+            width: 100px;
+            height: 100px;
+            background: #555;
+            position: absolute;
+            border-radius: 50px;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="drag"></div>
+<script src="js/jslib.js"></script>
+<script>
+    var oDrag = document.getElementById('drag');
+    //        oDrag.onmousedown = function (e){
+    //            e = e || window.event;
+    //            var left = e.clientX - oDrag.offsetLeft;
+    //            var top = e.clientY - oDrag.offsetTop;
+    //            document.onmousemove = function (e){
+    //                e = e || window.event;
+    //                var iLeft = e.clientX - left;
+    //                var iTop = e.clientY - top;
+    //
+    //                oDrag.style.left = iLeft + 'px';
+    //                oDrag.style.top = iTop + 'px';
+    //            }
+    //            oDrag.onmouseup = function(){
+    //                document.onmousemove = null;
+    //            }
+    //        }
+    var ileft = oDrag.offsetWidth/2;
+    var itop = oDrag.offsetHeight/2;
+
+    document.onclick = function(e){
+        e = e || window.event;
+
+        var iLeft = e.clientX - ileft;
+        var iTop = e.clientY - itop;
+        animate(oDrag,{
+            left: iLeft,
+            top: iTop
+        });
+
+//            if(ileft < oDrag.offsetWidth/2){
+//                ileft = oDrag.offsetWidth/2;
+//            }else if(ileft > document.documentElement.clientWidth - oDrag.offsetWidth/2){
+//                ileft = document.documentElement.clientWidth - oDrag.offsetWidth/2;
+//            }
+//            if(itop < oDrag.offsetHeight/2){
+//                itop = oDrag.offsetHeight/2;
+//            }else if(itop > document.documentElement.clientHeight - oDrag.offsetHeight/2){
+//                itop = document.documentElement.clientHeight - oDrag.offsetHeight/2;
+//            }
+
+    }
+</script>
+</body>
+</html>
