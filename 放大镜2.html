@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>放大镜练习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #small-box{
+            width: 480px;
+            height: 300px;
+            float: left;
+            position: relative;
+        }
+        #small-box img{
+            width: 480px;
+            height: 300px;
+        }
+        #drag{
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            opacity: 0;
+        }
+        #big-box{
+            width: 480px;
+            height: 300px;
+            overflow: hidden;
+            float: left;
+            display: none;
+            position: relative;
+        }
+        #big-box img{
+            width: 960px;
+            height: 600px;
+            top: 0;
+            left: 0;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="small-box">
+        <img src="img/6.jpg" alt=""/>
+        <div id="drag"></div>
+    </div>
+    <div id="big-box">
+        <img src="img/6.jpg" alt=""/>
+        <p>+</p>
+    </div>
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var oSmallBox = document.getElementById('small-box');
+    var oDrag = document.getElementById('drag');
+    var oBigBox = document.getElementById('big-box');
+    var oSmallImg = oSmallBox.getElementsByTagName('img')[0];
+    var oBigImg = oBigBox.getElementsByTagName('img')[0];
+
+    oSmallBox.onmouseover = function(){
+        oDrag.style.display = 'block';
+        oBigBox.style.display = 'block';
+    }
+    oSmallBox.onmouseout = function(){
+        oDrag.style.display = 'none';
+        oBigBox.style.display = 'none';
+    }
+    oSmallBox.onmousemove = function(e){
+        e = e || window.event;
+        var itop = e.clientY - oDrag.offsetHeight/2;
+        var ileft = e.clientX - oDrag.offsetWidth/2;
+
+        if(itop < 0){
+            itop = 0;
+        }else if(itop > oSmallBox.offsetHeight - oDrag.offsetHeight){
+            itop = oSmallBox.offsetHeight - oDrag.offsetHeight;
+        }
+        if(ileft < 0){
+            ileft = 0;
+        }else if(ileft > oSmallBox.offsetWidth - oDrag.offsetWidth){
+            ileft = oSmallBox.offsetWidth - oDrag.offsetWidth;
+        }
+        oDrag.style.top = itop + 'px';
+        oDrag.style.left = ileft + 'px';
+
+        var iTopIndex = oDrag.offsetTop / (oSmallBox.offsetHeight - oDrag.offsetHeight);
+        var iLeftIndex = oDrag.offsetLeft / (oSmallBox.offsetWidth - oDrag.offsetWidth);
+        var iLeft = iLeftIndex*(oBigImg.offsetWidth - oBigBox.offsetWidth);
+        var iTop = iTopIndex*(oBigImg.offsetHeight - oBigBox.offsetHeight);
+        oBigImg.style.top = -iTop + 'px';
+        oBigImg.style.left = -iLeft + 'px';
+    }
+</script>
+</body>
+</html>
