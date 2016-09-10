@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>无缝滚动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        #container{
+            width: 400px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #content{
+            width: 520px;
+            position: absolute;
+            left: -520px;
+        }无缝滚动无缝滚动
+        #content li{
+            width: 120px;
+            height: 120px;
+            background: #000;
+            font-size: 32px;
+            text-align: center;
+            line-height: 120px;
+            color: #fff;
+            float: left;
+            margin: 5px;
+        }
+        #arrow{
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            margin-left: -105px;
+            /*border: 1px solid #0000ff;*/
+        }
+        #arrow span{
+            border: 1px solid #000;
+            cursor: pointer;
+            width: 80px;
+            height: 40px;
+            float: left;
+            background: #ccc;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <div id="arrow">
+        <span id="left">&lt&lt向左</span>
+        <span id="stop">暂停</span>
+        <span id="right">向右&gt&gt</span>
+    </div>
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var oContent = document.getElementById('content');
+    oContent.innerHTML = oContent.innerHTML + oContent.innerHTML;//复制li
+
+    var aLi = oContent.getElementsByTagName('li');
+    oContent.style.width = aLi.length * (aLi[0].offsetWidth + 10) + "px";
+    var aLeft = document.getElementById('left');
+    var aRight = document.getElementById('right');
+        var aStop = document.getElementById('stop');
+//        aLi[0].style.opacity = 0.5;
+    var speed = 2;
+    var aSpeed = 0;
+    aLeft.onclick = function(){
+        aSpeed = -speed;
+        setInterval(function(){
+            if(oContent.offsetLeft <= -oContent.offsetWidth/2) {
+                oContent.style.left = 0;
+            }
+            oContent.style.left = oContent.offsetLeft + aSpeed + "px";
+        },10);
+    }
+    aRight.onclick = function(){
+        aSpeed = speed;
+        setInterval(function(){
+            if(oContent.offsetLeft >= 0){
+                oContent.style.left = -oContent.offsetWidth/2 + 'px';
+            }
+            oContent.style.left = oContent.offsetLeft + aSpeed + "px";
+        },10);
+    }
+    aStop.onclick = function(){
+        aSpeed = 0;
+        speed = 2;
+        setInterval(function(){
+            oContent.style.left = oContent.offsetLeft + aSpeed + "px";
+        },10);
+    }
+
+</script>
+</body>
+</html>
