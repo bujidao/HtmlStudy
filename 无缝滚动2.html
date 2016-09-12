@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>滚动轮播图</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 1280px;
+            height: 720px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #content{
+            width: 10240px;
+            /*width: 6400px;*/
+            position: absolute;
+            left: 0;
+        }
+        #content img{
+            height: 720px;
+            width: 1280px;
+            /*display: none;*/
+            float: left;
+        }
+        #content img.selected{
+            display: block;
+        }
+        #tab{
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+        #tab li{
+            width: 45px;
+            height: 45px;
+            background: #333;
+            margin-left: 20px;
+            float: left;
+            font-size: 30px;
+            color: #fff;
+            text-align: center;
+            line-height: 45px;
+            opacity: 0.85;
+            cursor: pointer;
+        }
+        #tab li.selected{
+            background: orange;
+        }
+        #arrow{
+            position: absolute;
+            bottom: 10px;
+        }
+        #arrow span{
+            background: #333;
+            width: 45px;
+            height: 45px;
+            float: left;
+            cursor: pointer;
+            text-align: center;
+            line-height: 45px;
+            opacity: 0.95;
+            margin: 10px;
+            color: #fff;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <img src="img/6.jpg" alt="" class="selected"/>
+        <img src="img/7.jpg" alt=""/>
+        <img src="img/8.jpg" alt=""/>
+        <img src="img/9.jpg" alt=""/>
+    </div>
+    <div id="tab">
+        <ul>
+            <li class="selected">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <div id="arrow">
+        <span id="prev">&lt;</span>
+        <span id="next">&gt;</span>
+    </div>
+</div>
+<script src="js/jslib.js"></script>
+<script>
+    var oContainer = document.getElementById('container');
+    var oContent = document.getElementById('content');
+    var oTab = document.getElementById('tab');
+    var oArrow = document.getElementById('arrow');
+    var oNext = document.getElementById('next');
+    var oPrev = document.getElementById('prev');
+    var aImg = oContent.getElementsByTagName('img');
+    var aLi = oTab.getElementsByTagName('li');
+    var iNow = 0;
+    oContent.style.width = (aImg.length+1)*aImg[0].offsetWidth + 'px';
+    oContent.appendChild(aImg[0].cloneNode());
+
+    //    for(var i=0;i<aLi.length; i++){
+    //        aLi[i].index = i;
+    //        oNext.onclick = function(){
+    //            iNow++;
+    //            if(iNow == aLi.length){
+    //                iNow = 0 ;
+    //            }
+    //            changeImg(iNow);
+    //        }
+    //        oPrev.onclick = function(){
+    //            iNow--;
+    //            if(iNow == -1){
+    //                iNow = aLi.length-1;
+    //            }
+    //            changeImg(iNow);
+    //        }
+    //        function changeImg(imgIndex){
+    //            for(var i=0; i<aLi.length; i++){
+    //                aLi[i].className = '';
+    //            }
+    //            aLi[imgIndex].className = 'selected';
+    //            animate(oContent, {left: -aImg[0].offsetWidth*imgIndex});
+    //        }
+    //    }
+    var speed = 2;
+    oPrev.onclick = function(){
+        var aSpeed = -2;
+        setInterval(function(){
+            if(oContent.offsetLeft <= -(aImg.length-1)*aImg[0].offsetWidth) {
+                oContent.style.left = 0;
+            }
+            oContent.style.left = oContent.offsetLeft + aSpeed + "px";
+        },10);
+    }
+    oNext.onclick = function(){
+        var aSpeed = 2;
+        setInterval(function(){
+            if(oContent.offsetLeft >= 0){
+                oContent.style.left = -(aImg.length-1)*aImg[0].offsetWidth + 'px';
+            }
+            oContent.style.left = oContent.offsetLeft + aSpeed + "px";
+        },10);
+    }
+</script>
+</body>
+</html>
