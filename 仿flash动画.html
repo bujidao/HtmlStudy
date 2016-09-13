@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ZJing</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            background: #555;
+        }
+        #container{
+            width: 400px;
+            margin: 100px auto;
+            top: 0;
+            left: 0;
+        }
+        #img-box{
+            position: relative;
+            width: 400px;
+            height: 320px;
+        }
+        #img-box li{
+            position: absolute;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+        }
+        #prev,#next{
+            width: 200px;
+            height: 320px;
+            position: absolute;
+            top: 0;
+            /*background-color: #fff;*/
+            opacity: 0;
+            z-index: 10000;
+        }
+        #prev{
+            left: 0;
+        }
+        #next{
+            right: 0;
+        }
+        #prev-btn,#next-btn{
+            position: absolute;
+            top: 50%;
+            margin: -30px 0;
+            height: 60px;
+            width: 60px;
+            overflow: hidden;
+            background-image: url("images/btn.gif");
+            cursor: pointer;
+        }
+        #prev-btn{
+            left: 10px;
+        }
+        #next-btn{
+            right: 10px;
+            background-position: 0 -60px;
+        }
+        #txt-bar{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            background: #000;
+            opacity: 0.6;
+            color: #fff;
+            z-index: 10000;
+        }
+        #txt{
+            float: left;
+        }
+        #num{
+            float: right;
+        }
+        #small-box{
+            width: 400px;
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+            left: 0;
+        }
+        #small-img{
+            width: 780px;
+            height: 112px;
+            background: #eee;
+            position: absolute;
+            left: 0;
+        }
+        #small-img li{
+            width: 120px;
+            height: 92px;
+            float: left;
+            margin-left: 10px;
+            padding: 10px 0;
+            overflow: hidden;
+            opacity: 0.6;
+        }
+        #small-img li img{
+            width: 120px;
+            height: 92px;
+            cursor: pointer;
+        }
+        #small-img li.selected{
+            opacity: 1;
+            /*filter: */
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="img-box">
+        <ul>
+            <li style="z-index:1"><img src="img/1.jpg" alt="11111"/></li>
+            <li><img src="img/2.jpg" alt="22222"/></li>
+            <li><img src="img/3.jpg" alt="33333"/></li>
+            <li><img src="img/4.jpg" alt="44444"/></li>
+            <li><img src="img/5.jpg" alt="55555"/></li>
+            <li><img src="img/6.jpg" alt="66666"/></li>
+        </ul>
+
+        <div id="prev">
+            <span id="prev-btn"></span>
+        </div>
+        <div id="next">
+            <span id="next-btn"></span>
+        </div>
+
+        <div id="txt-bar">
+            <span id="txt">aaa</span>
+            <div id="num">
+                <span>1</span>/
+                <span>6</span>
+            </div>
+        </div>
+    </div>
+    <div id="small-box">
+        <div id="small-img">
+            <ul>
+                <li class="selected"><img src="img/1.jpg" alt=""/></li>
+                <li><img src="img/2.jpg" alt=""/></li>
+                <li><img src="img/3.jpg" alt=""/></li>
+                <li><img src="img/4.jpg" alt=""/></li>
+                <li><img src="img/5.jpg" alt=""/></li>
+                <li><img src="img/6.jpg" alt=""/></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="js/jslib.js"></script>
+<script>
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var oPrevBtn = document.getElementById('prev-btn');
+    var oNextBtn = document.getElementById('next-btn');
+    var oImgBox = document.getElementById('img-box');
+    var aImg = oImgBox.getElementsByTagName('li');
+    var oTxt = document.getElementById('txt');
+    var oNum = document.getElementById('num');
+    var oSpan = oNum.getElementsByTagName('span')[0];
+    var oSmallImg = document.getElementById('small-img');
+    var aSmall = oSmallImg.getElementsByTagName('li');
+    var iNow = 0;
+    var zIndex = 1;
+
+    //        oImgBox.style.width = aImg[0].offsetWidth
+
+    var txt = aImg[iNow].getElementsByTagName('img')[0].alt;
+    oTxt.innerHTML = txt;
+    oSpan.innerHTML = iNow + 1;
+
+    oPrev.onmouseover = oNext.onmouseover = function(){
+        animate(this,{opacity: 100});
+    }
+    oPrev.onmouseout = oNext.onmouseout = function(){
+        animate(this,{opacity: 0});
+    }
+    oPrevBtn.onclick = function(){
+        iNow--;
+        if(iNow == -1){
+            iNow = aImg.length - 1;
+        }
+        changeImg(iNow);
+    }
+    oNextBtn.onclick = function(){
+        iNow++;
+        if(iNow == aImg.length){
+            iNow = 0;
+        }
+        changeImg(iNow);
+    }
+    function changeImg(btn){
+        var txt = aImg[btn].getElementsByTagName('img')[0].alt;
+        aImg[btn].style.height = 0;
+        aImg[btn].style.zIndex = ++zIndex;
+        oTxt.innerHTML = txt;
+        oSpan.innerHTML = btn + 1;
+        animate(aImg[btn],{height: 320});
+    }
+    for(var i; i<aSmall.length; i++){
+        aSmall[i].index = i;
+        aSmall[i].onmouseover = function(){
+            if(iNow != this.index){
+                this.className = 'selected';
+            }
+        }
+    }
+
+
+
+</script>
+</body>
+</html>
