@@ -1,0 +1,9 @@
+<!--
+
+css选择器：
+1、标签元素选择器 h1 div
+2、id 选择器 #id
+3、class选择器 .class
+
+权重值：id100  class10   gar1
+-->
