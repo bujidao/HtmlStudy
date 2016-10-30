@@ -22,8 +22,12 @@
         }
         #img-box{
             position: relative;
-            width: 400px;
+            width: 530px;
             height: 320px;
+            overflow: hidden;
+        }
+        #img-box img{
+            width: 600px;
         }
         #img-box li{
             position: absolute;
@@ -53,7 +57,7 @@
             height: 60px;
             width: 60px;
             overflow: hidden;
-            background-image: url("images/btn.gif");
+            background-image: url("img/small/btn.gif");
             cursor: pointer;
         }
         #prev-btn{
@@ -81,7 +85,7 @@
             float: right;
         }
         #small-box{
-            width: 400px;
+            width: 530px;
             height: 320px;
             overflow: hidden;
             position: relative;
@@ -178,17 +182,17 @@
 
     oPrev.onmouseover = oNext.onmouseover = function(){
         animate(this,{opacity: 100});
-    }
+    };
     oPrev.onmouseout = oNext.onmouseout = function(){
         animate(this,{opacity: 0});
-    }
+    };
     oPrevBtn.onclick = function(){
         iNow--;
         if(iNow == -1){
             iNow = aImg.length - 1;
         }
         changeImg(iNow);
-    }
+    };
     oNextBtn.onclick = function(){
         iNow++;
         if(iNow == aImg.length){
@@ -204,11 +208,12 @@
         oSpan.innerHTML = btn + 1;
         animate(aImg[btn],{height: 320});
     }
-    for(var i; i<aSmall.length; i++){
+    for(var i = 0; i<aSmall.length; i++){
         aSmall[i].index = i;
-        aSmall[i].onmouseover = function(){
+        aSmall[i].onclick = function(){
             if(iNow != this.index){
                 this.className = 'selected';
+                changeImg(iNow);
             }
         }
     }
