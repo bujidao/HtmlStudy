@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var a = [50];
+//    for(var i = 0;i<50;i++){
+//        a[i] = prompt("请输入价格：");
+//        if(a[i]>1000) {
+//            alert("请输入正确的结果");
+//        }
+//    }
+    var i = 0;
+    while(i<50){
+        a[i] = prompt("请输入价格：");
+        if(a[i]>1000) {
+            alert("请输入正确的结果");
+        }
+    }
+    bubbleSort(a);
+    function bubbleSort(arr) {
+        var len = arr.length;
+        for (var i = 0; i < len; i++) {
+            for (var j = 0; j < len - 1 - i; j++) {
+                if (arr[j] > arr[j+1]) {        //相邻元素两两对比
+                    var temp = arr[j+1];        //元素交换
+                    arr[j+1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        return arr;
+    }
+</script>
+</body>
+</html>
