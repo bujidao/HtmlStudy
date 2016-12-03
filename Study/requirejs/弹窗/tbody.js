@@ -1,6 +1,4 @@
-/**
- * Created by ZJing on 2017/2/19.
- */
+
 
 require(['jquery','dialog'],function($,Dialog){
     var arr = [];

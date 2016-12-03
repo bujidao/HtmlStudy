@@ -1,6 +1,4 @@
-/**
- * Created by ZJing on 2017/2/19.
- */
+
 //console.log('i am a.js');
 define(function(){
     function arr(arr){

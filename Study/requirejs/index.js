@@ -1,11 +1,9 @@
-/**
- * Created by ZJing on 2017/2/19.
- */
+
 //define(function(){
 //    function add(a,b){
 //        return a+b;
 //    }    xzzza
-//    return add;//·µ»Øº¯Êý//add()·µ»Øº¯ÊýÀïÃæµÄÖµ£¨return a+b£©
+//    return add;//ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½//add()ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½return a+bï¿½ï¿½
 //});
 //console.log(111);
 require(['a'],function(arr){
