@@ -1,0 +1,48 @@
+$color: #0f0;
+//#arrow{
+//  //background: #0f0;
+//  width: 0;
+//  height: 0;
+//  border-width: 20px;
+//  border-style: solid dotted dotted dotted;
+//  border-color: $color transparent transparent transparent;
+//}
+
+@mixin arrow($dir,$w,$col,$col2){
+  //background: #0f0;
+  overflow: auto;
+  width: 100px;
+  height: 100px;
+  //border-radius: 50%;
+  border-top-width: 25px;
+  border-width: $w;
+  border-style: solid;
+  //border-color: $color transparent transparent transparent;
+  @if($dir == 'top'){
+    border-color: transparent transparent $col transparent;
+  }
+  @if($dir == 'buttom'){
+    border-color: $col transparent transparent transparent;
+  }
+  @if($dir == 'left'){
+    border-color: transparent $col transparent transparent;
+  }
+  @if($dir == 'right'){
+    border-color: transparent transparent transparent $col;
+  }
+  @if($dir == 'topleft'){
+    border-color: transparent $col $col transparent;
+  }
+  @if($dir == 'topright'){
+    border-color: transparent transparent $col $col;
+  }
+  @if($dir == 'topbuttom'){
+    border-color: $col transparent $col transparent;
+  }
+  @if($dir == 'fun'){
+    border-color: $col $col2 $col $col2;
+  }
+}
+#arrow{
+  @include arrow(fun,50px,red,green);
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>scss</title>
+    <link rel="stylesheet" href="ii.css"/>
+    <style>
+        #arrow{
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="arrow"></div>
+<script>
+    数据类型：
+    1、基本类型
+        string number boolean undefined null
+        undefined: 声明了没有赋值、数组、对象中没有的属性；
+        null: 直接声明null、dom元素没有找到，空对象；
+    2、引用数据类型
+        object
+        array
+        function
+    基本数据类型存在栈里面
+    引用说数据类型存在堆里面，存的地址，在地址里面去堆找对象
+    var obj = {//对象直接量
+        name='lisi'
+    }
+    var obj = new object()//实例化对象
+        object.name = 'lisi';
+
+    function Person(){
+        this.name = 'lisi';
+    }
+    Person.prototype.age='20';//原型链
+
+    事件：e
+    事件源
+    事件
+    事件处理函数
+    var oDiv = document.getElementById('div2');
+    oDiv.onclick = function(e){
+        e = e || window.event;//ie click事件兼容
+        target = e.target || e.srcElement;//事件源冒泡处理
+        }
+
+    事件委托
+    把事件委托到父元素身上
+    $('ul').on('click','li', function () {
+        ul 触发的事件
+        li 事件源
+    })
+    ==
+    var oDiv = document.getElementById('div2');
+    oDiv.onclick = function(e){
+        e = e || window.event;//ie click事件兼容
+        var target = e.target || e.srcElement;//事件源冒泡处理
+    }
+
+    阻止事件冒泡
+    cancleB
+
+    阻止事件默认行为
+    return false;
+
+    offsetWidth  = width+padding+border；可见区域，只能取值，不能赋值；
+            .style.width 能取值，只能取到内联的值
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
