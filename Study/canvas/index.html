@@ -1,0 +1,464 @@
+<!--canvas学习-->
+
+
+
+
+<!--======================================================-->
+<!--线性-->
+<!--======================================================-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>canvas</title>-->
+    <!--<style>-->
+        <!--body{-->
+        <!--background: #333;-->
+        <!--}-->
+        <!--canvas{-->
+        <!--background:#fff;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+    <!--<canvas id="cav" width="1000" height="600"></canvas>-->
+
+    <!--//宽高属性放在css里面，绘画面积放大，但是画布没有放大-->
+    <!--//宽高属性内联，则直接设置画布面积-->
+    <!--<script>-->
+    <!--var c=document.getElementById("cav");-->
+    <!--var cxt=c.getContext("2d");-->
+
+    <!--cxt.strokeStyle="#f00";-->
+    <!--cxt.fillStyle = "#00f";-->
+
+    <!--cxt.moveTo(20,20);-->
+    <!--cxt.lineTo(200,400);-->
+    <!--cxt.lineTo(800,200);-->
+    <!--cxt.closePath();-->
+    <!--cxt.stroke();-->
+    <!--cxt.fill();-->
+<!--//    cxt.fillStyle="#00FF00";-->
+<!--//    cxt.fillRect(0,0,150,75);-->
+    <!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--======================================================-->
+<!--圆形-->
+<!--======================================================-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>canvas</title>-->
+    <!--<style>-->
+        <!--body{-->
+            <!--background: #333;-->
+        <!--}-->
+        <!--canvas{-->
+            <!--background:#fff;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<canvas id="cav" width="1000" height="600"></canvas>-->
+<!--<script>-->
+    <!--var c=document.getElementById("cav");-->
+    <!--var cxt=c.getContext("2d");-->
+
+    <!--cxt.strokeStyle="#f00";-->
+    <!--cxt.fillStyle = "#00f";-->
+
+<!--//    cxt.moveTo(20,20);-->
+<!--//    cxt.lineTo(200,400);-->
+<!--//    cxt.lineTo(800,200);-->
+<!--//    cxt.closePath();-->
+    <!--cxt.arc(400,300,200,0,0.5*Math.PI,true);-->
+    <!--cxt.stroke();-->
+<!--//    cxt.fill();-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--======================================================-->
+<!--矩形-->
+<!--======================================================-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>canvas</title>-->
+    <!--<style>-->
+        <!--body{-->
+            <!--background: #333;-->
+        <!--}-->
+        <!--canvas{-->
+            <!--background:#fff;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<canvas id="cav" width="1000" height="600"></canvas>-->
+<!--<script>-->
+    <!--var c=document.getElementById("cav");-->
+    <!--var cxt=c.getContext("2d");-->
+
+    <!--cxt.strokeStyle="#f00";-->
+    <!--cxt.fillStyle = "#00f";-->
+    <!--cxt.rect(50,50,200,300);-->
+    <!--cxt.fill();-->
+    <!--cxt.stroke();-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--======================================================-->
+<!--弧度-->
+<!--======================================================-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>canvas</title>-->
+    <!--<style>-->
+        <!--body{-->
+            <!--background: #333;-->
+        <!--}-->
+        <!--canvas{-->
+            <!--background:#fff;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<canvas id="cav" width="1000" height="600"></canvas>-->
+<!--<script>-->
+    <!--var c=document.getElementById("cav");-->
+    <!--var cxt=c.getContext("2d");-->
+
+    <!--cxt.strokeStyle="#f00";-->
+    <!--cxt.fillStyle = "#00f";-->
+    <!--cxt.moveTo(20,20);           // 创建开始点-->
+    <!--cxt.lineTo(100,20);          // 创建水平线-->
+    <!--cxt.arcTo(150,20,150,70,50); // 创建弧-->
+    <!--cxt.lineTo(150,120);         // 创建垂直线-->
+    <!--cxt.stroke();                // 进行绘制-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--======================================================-->
+<!--渐变-->
+<!--======================================================-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>canvas</title>-->
+    <!--<style>-->
+        <!--body{-->
+            <!--background: #333;-->
+        <!--}-->
+        <!--canvas{-->
+            <!--background:#fff;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+    <!--<canvas id="cav" width="1000" height="600"></canvas>-->
+    <!--<script>-->
+        <!--var c=document.getElementById("cav");-->
+        <!--var cxt=c.getContext("2d");-->
+
+        <!--cxt.strokeStyle="#f00";-->
+        <!--cxt.fillStyle = "#00f";-->
+        <!--var grd=cxt.createLinearGradient(0,0,900,50);-->
+        <!--grd.addColorStop(0,"#FF0000");-->
+        <!--grd.addColorStop(1,"#00FF00");-->
+        <!--cxt.fillStyle=grd;-->
+        <!--cxt.fillRect(0,0,900,500);//（x轴，y轴，长，宽）-->
+    <!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+<!--======================================================-->
+<!--画图形-->
+<!--======================================================-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>canvas</title>-->
+    <!--<style>-->
+        <!--body{-->
+            <!--background: #333;-->
+        <!--}-->
+        <!--canvas{-->
+            <!--background:#fff;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<canvas id="cav" width="1000" height="600"></canvas>-->
+<!--<script>-->
+    <!--var c=document.getElementById("cav");-->
+    <!--var cxt=c.getContext("2d");-->
+
+    <!--cxt.strokeStyle="#f00";-->
+    <!--cxt.fillStyle = "#00f";-->
+    <!--var img= new Image();-->
+    <!--img.src = "2.jpg";-->
+<!--//    方法一：下载->使用-->
+<!--//    cxt.drawImage(img,50,50);//.drawImage(imageObj,x,y)-->
+
+<!--//    方法二：下载后立即使用-->
+<!--//    img.onload = function(){-->
+<!--//        cxt.drawImage(img,50,50);-->
+<!--//    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--======================================================-->
+<!--画板-->
+<!--======================================================-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>canvas</title>-->
+    <!--<style>-->
+        <!--body{-->
+            <!--background: #333;-->
+        <!--}-->
+        <!--canvas{-->
+            <!--background:#fff;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<canvas id="cav" width="1000" height="600"></canvas>-->
+<!--<script>-->
+    <!--var c=document.getElementById("cav");-->
+    <!--var cxt=c.getContext("2d");-->
+
+    <!--cxt.strokeStyle="#f00";-->
+    <!--cxt.fillStyle = "#00f";-->
+    <!--c.onmousedown= function(e){-->
+        <!--cxt.moveTo(e.clientX,e.clientY);-->
+        <!--c.onmousemove = function(e){-->
+            <!--cxt.lineTo(e.clientX,e.clientY);-->
+            <!--cxt.stroke();-->
+        <!--}-->
+        <!--c.onmouseup = function(){-->
+            <!--c.onmousemove = null;-->
+        <!--}-->
+    <!--}-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--======================================================-->
+<!--画板-->
+<!--======================================================-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>canvas</title>-->
+    <!--<style>-->
+        <!--body{-->
+            <!--background: #333;-->
+        <!--}-->
+        <!--canvas{-->
+            <!--background:#fff;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+    <!--<canvas id="cav" width="1000" height="600"></canvas>-->
+    <!--<script>-->
+        <!--var c=document.getElementById("cav");-->
+        <!--var cxt=c.getContext("2d");-->
+        <!--c.onmousedown = function(e){-->
+            <!--cxt.moveTo(e.clientX,e.clientY);-->
+            <!--c.onmousemove = function(e){-->
+                <!--cxt.lineTo(e.clientX,e.clientY);-->
+                <!--cxt.stroke();-->
+            <!--}-->
+            <!--c.onmouseup = function(){-->
+                <!--c.onmousemove = null;-->
+            <!--}-->
+        <!--}-->
+    <!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!--======================================================-->
+<!--始终。。时钟-->
+<!--======================================================-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>canvas</title>-->
+    <!--<style>-->
+        <!--body{-->
+            <!--background: #333;-->
+        <!--}-->
+        <!--canvas{-->
+            <!--background:#fff;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<canvas id="cav" width="1000" height="600"></canvas>-->
+<!--<script>-->
+    <!--var c=document.getElementById("cav");-->
+    <!--var cxt=c.getContext("2d");-->
+
+<!--//    大圆-->
+    <!--var circle = function(x,y,radius,begin,end,anger,lineWidth,color){-->
+        <!--cxt.beginPath();-->
+        <!--cxt.strokeStyle = color;-->
+        <!--cxt.lineWidth = lineWidth;-->
+        <!--cxt.arc(x,y,radius,begin,end,anger);-->
+        <!--cxt.stroke();-->
+        <!--cxt.closePath();-->
+    <!--}-->
+
+<!--//    var bigOne = function(){-->
+<!--//        for(var i = 0 ;i<12; i++){-->
+<!--//            cxt.beginPath();-->
+<!--//            cxt.lineWidth = 4;-->
+<!--//            cxt.moveTo(500,300);-->
+<!--//            cxt.arc(500,300,200,i*30*Math.PI/180,(i+1)*30*Math.PI/180,true);-->
+<!--//            cxt.stroke();-->
+<!--//            cxt.closePath();-->
+<!--//        }-->
+<!--//        cxt.beginPath();-->
+<!--//        cxt.moveTo(500,300);-->
+<!--//        cxt.arc(500,300,175,0,2*Math.PI,true);-->
+<!--//        cxt.fillStyle = "#fff";-->
+<!--//        cxt.fill();-->
+<!--//        cxt.closePath();-->
+<!--//    }-->
+
+<!--//    var smallOne = function(){-->
+<!--//        for(var i = 0 ;i<60; i++){-->
+<!--//            cxt.beginPath();-->
+<!--//            cxt.moveTo(500,300);-->
+<!--//            cxt.arc(500,300,200,i*6*Math.PI/180,i*6*Math.PI/180,true);-->
+<!--//            cxt.stroke();-->
+<!--//            cxt.closePath();-->
+<!--//        }-->
+<!--//        cxt.beginPath();-->
+<!--//        cxt.moveTo(500,300);-->
+<!--//        cxt.arc(500,300,185,0,2*Math.PI,true);-->
+<!--//        cxt.fillStyle = "#fff";-->
+<!--//        cxt.fill();-->
+<!--//        cxt.closePath();-->
+<!--//    }-->
+
+<!--//    刻度-->
+    <!--var pointerDotted = function(x,y,radius){-->
+        <!--for (var i =0;i<60;i++){-->
+            <!--cxt.beginPath();-->
+            <!--cxt.moveTo(x + radius*Math.cos(i*6*Math.PI/180),y + radius*Math.sin(i*6*Math.PI/180));-->
+            <!--cxt.lineTo(x + (radius-12)*Math.cos(i*6*Math.PI/180),y + (radius-12)*Math.sin(i*6*Math.PI/180));-->
+            <!--cxt.lineWidth = 2;-->
+            <!--if(i%5 == 0){-->
+                <!--cxt.lineTo(x + (radius-20)*Math.cos(i*6*Math.PI/180),y + (radius-20)*Math.sin(i*6*Math.PI/180));-->
+                <!--cxt.lineWidth = 2.5;-->
+            <!--}-->
+            <!--cxt.stroke();-->
+            <!--cxt.closePath();-->
+        <!--}-->
+    <!--}-->
+
+<!--//    var hourLine = function(x,y,radius,ang){-->
+<!--//        cxt.beginPath();-->
+<!--//        cxt.lineWidth = 2;-->
+<!--//        cxt.moveTo(500,300);-->
+<!--//        cxt.lineTo(x + radius*Math.cos(ang),y + radius*Math.sin(ang));-->
+<!--//        cxt.stroke();-->
+<!--//        cxt.closePath();-->
+<!--//    }-->
+<!--//-->
+<!--//    var min = function(x,y,radius,ang){-->
+<!--//        cxt.beginPath();-->
+<!--//        cxt.lineWidth = 2;-->
+<!--//        cxt.moveTo(500,300);-->
+<!--//        cxt.lineTo(x + radius*Math.cos(ang),y + radius*Math.sin(ang));-->
+<!--//        cxt.stroke();-->
+<!--//        cxt.closePath();-->
+<!--//    }-->
+
+<!--//    指针-->
+    <!--var pointer = function(x,y,radius,lineWidth,nowSecond){-->
+        <!--cxt.beginPath();-->
+        <!--cxt.lineWidth = lineWidth;-->
+        <!--cxt.moveTo(x,y);-->
+<!--//        cxt.lineTo(x + radius*Math.cos(ang),y + radius*Math.sin(ang));-->
+        <!--cxt.arc(x,y,radius,(45+nowSecond)*6*Math.PI/180,(45+nowSecond)*6*Math.PI/180);-->
+        <!--cxt.stroke();-->
+        <!--cxt.closePath();-->
+    <!--}-->
+
+<!--//    封装-->
+    <!--var timer = function(){-->
+        <!--var now = new Date();-->
+        <!--var nowSecond = now.getSeconds();-->
+        <!--var nowMinutes = now.getMinutes() + nowSecond/60;-->
+        <!--var nowHouse = now.getHours() + nowMinutes/60;-->
+        <!--cxt.clearRect(0,0,1000,600);//清空clearReact(x,y,width,height);-->
+        <!--circle(500,300,200,0,2*Math.PI,true,2,'red');-->
+        <!--pointerDotted(500,300,200);-->
+        <!--pointer(500,300,170,2,nowSecond);-->
+        <!--pointer(500,300,145,3,nowMinutes);-->
+        <!--pointer(500,300,100,4,nowHouse);-->
+    <!--}-->
+
+<!--//    每0.1s刷新-->
+    <!--setInterval(function(){-->
+        <!--timer();-->
+    <!--},100);-->
+<!--//    cxt.strokeStyle="#f00";-->
+<!--//    cxt.fillStyle = "#00f";-->
+<!--//    circle(500,300,200,0,2*Math.PI,true,2,'red');-->
+<!--//    cxt.moveTo(200,200);-->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>canvas</title>
+        <link rel="stylesheet" href="demo.css">
+    </head>
+<body>
+    <canvas id="cav" width="1000" height="600">
+        <p>你的浏览器不支持canvas</p>
+    </canvas>
+    <script src="demo.js"></script>
+</body>
+</html>
