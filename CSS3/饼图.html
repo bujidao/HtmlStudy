@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #pie,#pie2{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 100px auto;
+            background: yellowgreen;
+
+            background-image: linear-gradient(to right,transparent 50% ,#655 0);
+        }
+        #pie::before,#pie2::before{
+            content: '';
+            display: block;
+            margin-left: 50%;
+            height: 100%;
+            border-radius: 0 100% 100% 0 / 50%;
+            background-color: inherit;
+            transform-origin: left;
+            animation: spin 3s linear infinite,bg 6s step-end infinite;
+            animation-play-state: paused;
+            animation-delay: inherit;
+        }
+        #pie::before{
+            transform: rotate(.2turn);//指定旋转的值为72deg(0.2*360=72),写成.2turn（圈）更加直观。
+        }
+        #pie2::before{
+            transform: rotate(.6turn);
+        }
+        @keyframes spin {
+            to { transform: rotate(.5turn); }
+        }
+        @keyframes bg {
+            50% { background: #655; }
+        }
+    </style>
+</head>
+<body>
+    <div id="pie">10%</div>
+    <div id="pie2">60%</div>
+    <script>
+        const pie = document.querySelectorAll('.pie');
+        pie.forEach(pie => {
+            const p = parseFloat(pie.textContent);
+        pie.style.animationDelay = `-${p}s`;
+        })
+    </script>
+</body>
+</html>
