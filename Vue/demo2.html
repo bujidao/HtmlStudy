@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo2</title>
+    <style>
+        html,body{
+            height: 500%;
+        }
+        img{
+            position: absolute;
+            left: 50%;
+            width: 800px;
+            transform: translateX(-50%);
+        }
+        #imgimgid{
+            border: 5px solid #ccc;
+        }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <img :src="imgurl" :id="imgid" v-on:click="clickme" alt="">
+        <h1>我一共点击图片{{countClickTimes}}次</h1>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                imgurl: '../img/2.jpg',
+                imgid: 'imgimgid',
+                countClickTimes: 0
+            },
+            methods: {
+                clickme: function(){
+                    var count = this.countClickTimes;
+                    count++;
+//                    console.log('我当前点击了'+count+'次');
+                    while(count == 10){
+                        console.log('你已经点击'+count+'次了，休息一下吧');
+                        count++;
+                    }
+                    this.countClickTimes = count;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

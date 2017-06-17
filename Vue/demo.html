@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>逆转消息</title>
+    <style>
+        body,html  {
+            height: 500%;
+        }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">逆转消息</button>
+    </div>
+    <p>==========我是华丽丽的分割线==========</p>
+    <div id="app2">
+        <span v-bind:title="message">
+            鼠标停留见效果
+        </span>
+    </div>
+    <p>==========我是华丽丽的分割线==========</p>
+    <div id="app3">
+        <button v-on:click="message">点击我</button>
+    </div>
+    <p>==========我是华丽丽的分割线==========</p>
+    <div id="app4">
+        <p>表单演示</p>
+        <input type="text" v-model="message">
+    </div>
+    <p>==========我是华丽丽的分割线==========</p>
+    <ol id="app6">
+        <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+    </ol>
+    <p>==========我是华丽丽的分割线==========</p>
+    <img src="../img/1.jpg" alt="" style="position: absolute;width: 500px; left: 50%; transform: translateX(-50%);">
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'ZJing\'s vue 我爱学习'
+            },
+            methods: {
+                reverseMessage: function() {
+                    this.message = this.message.split('').reverse().join('');
+                }
+            }
+        });
+        var app2 = new Vue({
+            el: '#app2',
+            data: {
+                message: '页面加载于' + new Date()
+            }
+        });
+        var app3 = new Vue({
+            el: '#app3',
+            data: {
+//                message: alert(111)
+            }
+        });
+        var app4 = new Vue({
+            el: '#app4',
+            data: {
+                message: '请输入……'
+            }
+        });
+        Vue.component('todo-item', {
+            props: ['todo'],
+            template: '<li>{{todo.text}}</li>'
+        });
+        var app6 = new Vue({
+            el: '#app6',
+            data: {
+                groceryList:[
+                    {text: '素菜'},
+                    {text: '水果'},
+                    {text: '麻瓜'}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

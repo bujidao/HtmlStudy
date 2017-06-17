@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+     <div id="app">
+         <h1>{{title}}</h1>
+         <button v-on:click="reverse">dianij</button>
+         <h2>{{statezjing?'正确顺序':'你颠倒顺序了'}}</h2>
+     </div>
+     <script>
+         var app = new Vue({
+             el: '#app',
+             data: {
+                 title: 'i am title',
+                 statezjing: true
+             },
+             methods: {
+                 reverse: function(){
+                     this.title = this.title.split('').reverse().join('');
+                     this.statezjing = !this.statezjing
+                 }
+             }
+         })
+     </script>
+</body>
+</html>
