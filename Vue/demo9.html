@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style>
+        #app{
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>租房平台</h1>
+        <hr>
+        <p>你选择的房子是：
+            <select name="" id="" v-model="houseSelected">
+                <option v-for="(price,house,index) of houses"
+                        :value="{price,house,index}">
+                    {{house}}</option>
+            </select>
+        </p>
+        <p>是否需要其他服务: <input type="checkbox" @click="show = !show"></p>
+        <div v-show="show">
+            <p>请选择你的其他服务：</p>
+            <label v-for="(itemPrice,itemName) in items" :for="itemName">
+                {{itemName}}:{{itemPrice}}
+                <input type="checkbox" :value="{itemPrice,itemName}" v-model="moreServer">
+            </label><br>
+        </div>
+        <div>
+            <p>请确认你的订单：</p>
+            <p>{{houseSelected.house}}:{{houseSelected.price}}</p>
+            <p v-for="server in moreServer">{{server.itemName}}:{{server.itemPrice}}</p>
+        </div>
+        <div>
+            <p>总价: {{total}}</p>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                houses: {
+                    '海景房': '3889',
+                    '依山傍水': '2998',
+                    '森林小屋': '889'
+                },
+                items: {
+                    '空调': '50',
+                    '洗衣机': '60',
+                    'wifi': '10'
+                },
+                show: false,
+                moreServer: [],
+                houseSelected: [],
+                itemPrice:0,
+                price:0,
+                total: parseInt(this.price)+parseInt()
+            },
+            methods: {
+                total: function(){
+                    var total = 0;
+                    total = this.houseSelected.price;
+                    return
+                }
+            }
+        })
+    </script>
+</body>
+</html>

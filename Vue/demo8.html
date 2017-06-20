@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button{
+            display: block;
+            margin: 0 auto;
+        }
+        #content{
+            width: 500px;
+            margin: 0 auto;
+        }
+        .list-item{
+            display: inline-block;
+            margin: 10px;
+        }
+        .list-leave-to,.list-enter{
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .list-leave-active,.list-enter-active{
+            transition: all 1s;
+        }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="add">add</button>
+        <button @click="remove">remove</button>
+        <transition-grop name="list" tag="p">
+            <span v-for="item in items" v-bind:key="item" class="list-item">
+                {{item}}
+            </span>
+        </transition-grop>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                items:[1,2,3,4,5,6,7,8,9],
+                nextNum: 10
+            },
+            methods: {
+                randomIndex: function(){
+                    return Math.floor(Math.random()*this.items.length);
+                },
+                add: function(){
+                    this.items.splice(this.randomIndex(),0,this.nextNum++);
+                },
+                remove: function(){
+                    this.items.splice(this.randomIndex(),1);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
